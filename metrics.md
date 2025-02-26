@@ -129,7 +129,7 @@ Thresholds:
 
 How it works: Higher scores indicate that the texts are more similar.
 
-## 5. Data safety
+## 6. Data safety
 
 You can use the following data safety metrics to identify whether your model's input or output contains harmful or sensitive information:
 
@@ -162,7 +162,7 @@ Thesholds
  
 How it works: Higher scores indicate that a higher percentage of toxic content exists in the model input or output.
 
-## 6 .Readability
+## 7 .Readability
 
 Readability determines how difficult the model's output is to read by measuring characteristics such as sentence length and word complexity.
 
@@ -175,7 +175,7 @@ Thresholds:
 
 How it works: Higher scores indicate that the model's output is easier to read.
 
-## 7. Exact match
+## 8. Exact match
 
 Exact match compares model prediction strings to reference strings to measure how often the strings match.
 
@@ -194,190 +194,233 @@ Thresholds:
   Lower limit: 0.8
   Upper limit: 1
 
-    How it works: Higher scores indicate that model prediction strings match reference strings more often.
+How it works: Higher scores indicate that model prediction strings match reference strings more often.
 
-Multi-label/class metrics
+## 9. Multi-label/class metrics
 
 Multi-label/class metrics measure model performance for multi-label/multi-class predictions.
 
-    Metrics:
-        Micro F1 score
-        Macro F1 score
-        Micro precision
-        Macro precision
-        Micro recall
-        Macro recall
-    Task types: Entity extraction
-    Thresholds:
-        Lower limit: 0.8
-        Upper limit: 1
-    How it works: Higher scores indicate that predictions are more accurate.
+Metrics:
+- Micro F1 score
+- Macro F1 score
+- Micro precision
+- Macro precision
+- Micro recall
+- Macro recall
+  
+Task types: 
+- Entity extraction
+  
+Thresholds:
+  Lower limit: 0.8
+  Upper limit: 1
+  
+How it works: Higher scores indicate that predictions are more accurate.
 
-Answer quality
+## 10. Answer quality
 
 You can use answer quality metrics to evaluate the quality of model answers. Answer quality metrics are calculated with fine-tuned models or with LLM-as-a-judge models.
 
 You can calculate the following answer quality metrics:
 
-Faithfulness
+### Faithfulness
 
-    Faithfulness measures how grounded the model output is in the model context and provides attributions from the context to show the most important sentences that contribute to the model output. The attributions are provided when the metric is calculated with fine-tuned models only.
+Faithfulness measures how grounded the model output is in the model context and provides attributions from the context to show the most important sentences that contribute to the model output. The attributions are provided when the metric is calculated with fine-tuned models only.
 
-        Task types: Retrieval Augmented Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: Higher scores indicate that the output is more grounded and less hallucinated.
+Task types: 
+- Retrieval Augmented Generation (RAG)
+  
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: Higher scores indicate that the output is more grounded and less hallucinated.
 
-Answer relevance
+### Answer relevance
 
-    Answer relevance measures how relevant the answer in the model output is to the question in the model input.
+Answer relevance measures how relevant the answer in the model output is to the question in the model input.
 
-        Task types: Retrieval Augmented Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: Higher scores indicate that the model provides relevant answers to the question.
+Task types: Retrieval Augmented Generation (RAG)
 
-Answer similiarity
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: Higher scores indicate that the model provides relevant answers to the question.
 
-    Answer similarity measures how similar the answer or generated text is to the ground truth or reference answer to determine the quality of your model performance. The answer similarity metric is supported for configuration with LLM-as-a-judge models only.
+### Answer similiarity
 
-        Task types: Retrieval Augmented Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: Higher scores indicate that the answer is more similar to the reference output.
+Answer similarity measures how similar the answer or generated text is to the ground truth or reference answer to determine the quality of your model performance. The answer similarity metric is supported for configuration with LLM-as-a-judge models only.
 
-Unsuccessful requests
+Task types: 
+- Retrieval Augmented Generation (RAG)
+  
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: Higher scores indicate that the answer is more similar to the reference output.
 
-    Unsuccessful requests measures the ratio of questions that are answered unsuccessfully out of the total number of questions. Watsonx.governance does not calculate the unsuccessful requests metric with fine-tuned models.
+### Unsuccessful requests
 
-        Task types:
-            Retrieval Augmented Generation (RAG)
-            Question answering
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: Higher scores indicate that the model can not provide answers to the question.
+Unsuccessful requests measures the ratio of questions that are answered unsuccessfully out of the total number of questions. Watsonx.governance does not calculate the unsuccessful requests metric with fine-tuned models.
 
-Content analysis
+Task types:
+- Retrieval Augmented Generation (RAG)
+- Question answering
+  
+Thresholds:
+ Lower limit: 0
+ Upper limit: 1
+ 
+  How it works: Higher scores indicate that the model can not provide answers to the question.
+
+## 11. Content analysis
 
 You can use the following content analysis metrics to evaluate your model output against your model input or context:
 
-Coverage
+### Coverage
 
-    Coverage measures the extent that the foundation model output is generated from the model input by calculating the percentage of output text that is also in the input.
+Coverage measures the extent that the foundation model output is generated from the model input by calculating the percentage of output text that is also in the input.
 
-        Task types:
-            Text summarization
-            Retrieval Augmented Generation (RAG)
-        Thresholds:
-            Lower bound: 0
-            Upper bound: 1
-        How it works: Higher scores indicate that a higher percentage of output words are within the input text.
+Task types:
+- Text summarization
+- Retrieval Augmented Generation (RAG)
+  
+Thresholds:
+  Lower bound: 0
+  Upper bound: 1
+  
+How it works: Higher scores indicate that a higher percentage of output words are within the input text.
 
-Density
+### Density
 
-    Density measures how extractive the summary in the foundation model output is from the model input by calculating the average of extractive fragments that closely resemble verbatim extractions from the original text.
+Density measures how extractive the summary in the foundation model output is from the model input by calculating the average of extractive fragments that closely resemble verbatim extractions from the original text.
 
-        Task types:
-            Text summarization
-            Retrieval Augmented Generation (RAG)
-        Thresholds: Lower bound: 0
-        How it works: Lower scores indicate that the model output is more abstractive and on average the extractive fragments do not closely resemble verbatim extractions from the original text.
+Task types:
+- Text summarization
+- Retrieval Augmented Generation (RAG)
+  
+Thresholds: 
+  Lower bound: 0
+  
+How it works: Lower scores indicate that the model output is more abstractive and on average the extractive fragments do not closely resemble verbatim extractions from the original text.
 
-Compression
+### Compression
 
-    Compression measures how much shorter the summary is when compared to the input text. It calculates the ratio between the number of words in the original text and the number of words in the foundation model output.
+Compression measures how much shorter the summary is when compared to the input text. It calculates the ratio between the number of words in the original text and the number of words in the foundation model output.
 
-        Task types: Text summarization
-        Thresholds: Lower bound: 0
-        How it works: Higher scores indicate that the summary is more concise when compared to the original text.
+Task types: 
+- Text summarization
+  
+  Thresholds:
+    Lower bound: 0
+  
+How it works: Higher scores indicate that the summary is more concise when compared to the original text.
 
-Repetitiveness
+### Repetitiveness
 
-    Repetitiveness measures the percentage of n-grams that repeat in the foundation model output by calculating the number of repeated n-grams and the total number of n-grams in the model output.
+Repetitiveness measures the percentage of n-grams that repeat in the foundation model output by calculating the number of repeated n-grams and the total number of n-grams in the model output.
 
-        Task types: Text summarization
-        Thresholds: Lower bound: 0
+Task types: 
+- Text summarization
+  
+  Thresholds:
+    Lower bound: 0
 
-Abstractness
+### Abstractness
 
-    Abstractness measures the ratio of n-grams in the generated text output that do not appear in the source content of the foundation model.
+  Abstractness measures the ratio of n-grams in the generated text output that do not appear in the source content of the foundation model.
 
-        Task types:
-            Text summarization
-            Retrieval Augmented Generation (RAG)
-        Thresholds:
-            Lower bound: 0
-            Upper bound: 1
-        How it works: Higher scores indicate high abstractness in the generated text output.
+  Task types:
+- Text summarization
+- Retrieval Augmented Generation (RAG)
+  
+Thresholds:
+  Lower bound: 0
+  Upper bound: 1
+  
+How it works: Higher scores indicate high abstractness in the generated text output.
 
-Retrieval quality
+## 12 .Retrieval quality
 
 You can use the retrieval quality metrics to measure the quality of how the retrieval system ranks relevant contexts. Retrieval quality metrics are calculated with fine-tuned models or with LLM-as-a-judge models.
 
 You can calculate the following retrieval quality metrics:
 
-Context relevance
+### Context relevance
 
-    Context relevance measures how relevant the context that your your model retrieves is with the question that is specified in the prompt. When multiple context variables exist, the context relevance scores are generated when the metric is calculated with fine-tuned models only.
+Context relevance measures how relevant the context that your your model retrieves is with the question that is specified in the prompt. When multiple context variables exist, the context relevance scores are generated when the metric is calculated with fine-tuned models only.
 
-        Task types: Retrieval Augmented Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: Higher scores indicate that the context is more relevant to the question in the prompt.
+Task types: 
+- Retrieval Augmented Generation (RAG)
+  
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: Higher scores indicate that the context is more relevant to the question in the prompt.
 
-Retrieval precision
+### Retrieval precision
 
-    Retrieval precision measures the quanity of relevant contexts from the total of contexts that are retrieved.
+Retrieval precision measures the quanity of relevant contexts from the total of contexts that are retrieved.
 
-        Task types: Retrieval Augment Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: A value of 1 indicates that all of the retrieved contexts are relevant. A value of 0 indicates that none of the retrieved contexts are relevant. If the score is trending upwards, the retrieved contexts are relevant to the question. If the score is trending downwards, the retrieved contexts are not relevant to the question.
+Task types: Retrieval Augment Generation (RAG)
 
-Average precision
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: A value of 1 indicates that all of the retrieved contexts are relevant. A value of 0 indicates that none of the retrieved contexts are relevant. If the score is trending upwards, the retrieved contexts are relevant to the question. If the score is trending downwards, the retrieved contexts are not relevant to the question.
 
-    Average precision evaluates whether all of the relevant contexts are ranked higher or not by calculating the mean of the precision scores of relevant contexts.
+### Average precision
 
-        Task types: Retrieval Augment Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: A value of 1 indicates that all the relevant contexts are ranked higher. A value of 0 indicates that none of the retrieved contexts are relevant. If the score is trending upwards, the relevant contexts are ranked higher. If the score is trending downwards, the relevant contexts are not ranked lower.
+Average precision evaluates whether all of the relevant contexts are ranked higher or not by calculating the mean of the precision scores of relevant contexts.
 
-Reciprocal rank
+Task types: 
+- Retrieval Augment Generation (RAG)
+  
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: A value of 1 indicates that all the relevant contexts are ranked higher. A value of 0 indicates that none of the retrieved contexts are relevant. If the score is trending upwards, the relevant contexts are ranked higher. If the score is trending downwards, the relevant contexts are not ranked lower.
 
-    Reciprocal rank is the reciprocal rank of the first relevant context.
+### Reciprocal rank
 
-        Task types: Retrieval Augment Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: A value of 1 indicates that the first relevant context is at the first position. A value of 0 indicates that none of the relevant contexts are retrieved. If the score is trending upwards, the first relevant context is ranked higher. If the score is trending downwards, the first relevant context is ranked lower.
+Reciprocal rank is the reciprocal rank of the first relevant context.
 
-Hit rate
+Task types: 
+- Retrieval Augment Generation (RAG)
+  
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: A value of 1 indicates that the first relevant context is at the first position. A value of 0 indicates that none of the relevant contexts are retrieved. If the score is trending upwards, the first relevant context is ranked higher. If the score is trending downwards, the first relevant context is ranked lower.
 
-    Hit rate measures whether there is at least one relevant context among the retrieved contexts.
+### Hit rate
 
-        Task types: Retrieval Augment Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: A value of 1 indicates that there is at least one relevant context. A value of 0 indicates that no relevant context is in the retrieved contexts. If the score is trending upwards, at least one relevant context is in the retrieved context. If the score is trending downwards, no relevant contexts are retrieved.
+Hit rate measures whether there is at least one relevant context among the retrieved contexts.
 
-Normalized Discounted Cumulative Gain
+Task types: 
+- Retrieval Augment Generation (RAG)
+  
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: A value of 1 indicates that there is at least one relevant context. A value of 0 indicates that no relevant context is in the retrieved contexts. If the score is trending upwards, at least one relevant context is in the retrieved context. If the score is trending downwards, no relevant contexts are retrieved.
 
-    Normalized Discounted Cumulative Gain (NDCG) measures the ranking quality of the retrieved contexts.
+### Normalized Discounted Cumulative Gain
 
-        Task types: Retrieval Augment Generation (RAG)
-        Thresholds:
-            Lower limit: 0
-            Upper limit: 1
-        How it works: A value of 1 indicates that the retrieved contexts are ranked in the correct order. If the score is trending upwards, the ranking of the retrieved contexts is correct. If the score is trending downwards, the ranking of the retrieved contexts is incorrect.
+Normalized Discounted Cumulative Gain (NDCG) measures the ranking quality of the retrieved contexts.
 
-Parent topic: Configuring model evaluations
+Task types: 
+- Retrieval Augment Generation (RAG)
+  
+Thresholds:
+  Lower limit: 0
+  Upper limit: 1
+  
+How it works: A value of 1 indicates that the retrieved contexts are ranked in the correct order. If the score is trending upwards, the ranking of the retrieved contexts is correct. If the score is trending downwards, the ranking of the retrieved contexts is incorrect.
